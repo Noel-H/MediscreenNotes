@@ -10,11 +10,7 @@ public class Note {
 
     @Id
     private String id;
+
     private String PatientName;
     private String noteOfThePractitioner;
-
-    public Note(String patientName, String noteOfThePractitioner) {
-        PatientName = patientName;
-        this.noteOfThePractitioner = noteOfThePractitioner;
-    }
 }

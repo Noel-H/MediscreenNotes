@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Note</title>
+</head>
+<body>
+
+<table>
+    <tbody>
+    <tr th:each="note : ${noteList}">
+        <td th:text="${note.getPatientName()}">LastName</td>
+        <td th:text="${note.getNoteOfThePractitioner()}">FirstName</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
