@@ -5,6 +5,7 @@ import com.noelh.mediscreennotes.repository.NoteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class NoteService {
@@ -19,11 +20,9 @@ public class NoteService {
         return noteRepository.findAll();
     }
 
-//    public Note addNote(NoteDTO noteDTO){
-//        Note note = new Note();
-//        note.setPatientName(noteDTO.getPatientName());
-//        note.setNoteOfThePractitioner(noteDTO.getNoteOfThePractitioner());
-//        return noteRepository.save(note);
-//    }
+    public Note getNoteById(String id){
+        return noteRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Note not found with id : " + id));
+    }
 
 }
