@@ -20,6 +20,6 @@ public class NoteController {
     public String getNoteList(Model model){
         log.info("GET /");
         model.addAttribute("noteList", noteService.getNoteList());
-        return "Note";
+        return "NoteList";
     }
 }
