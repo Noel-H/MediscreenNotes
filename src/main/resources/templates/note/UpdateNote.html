@@ -5,6 +5,19 @@
     <title>Update</title>
 </head>
 <body>
-<p>Update note Form</p>
+<form th:action="@{/update/{id}(id=${note.getId})}" th:object="${note}" method="post">
+
+    <label for="id">Id</label>
+    <input type="text" id="id" th:field="*{id}" readonly/>
+
+    <label for="patientName">PatientName</label>
+    <input type="text" id="patientname" th:field="*{patientName}" />
+
+    <label for="noteOfThePractitioner">NoteOfThePractitioner</label>
+    <input type="text" id="noteOfThePractitioner" th:field="*{noteOfThePractitioner}"/>
+
+    <button type="submit">Submit</button>
+    <a th:href="@{/}">Cancel</a>
+</form>
 </body>
 </html>

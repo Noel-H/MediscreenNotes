@@ -5,6 +5,16 @@
     <title>Add</title>
 </head>
 <body>
-<p>Add note Form</p>
+<form th:action="@{/add}" th:object="${noteDTO}" method="post">
+
+    <label for="patientName">PatientName</label>
+    <input type="text" id="patientname" th:field="*{patientName}" />
+
+    <label for="noteOfThePractitioner">NoteOfThePractitioner</label>
+    <input type="text" id="noteOfThePractitioner" th:field="*{noteOfThePractitioner}"/>
+
+    <button type="submit">Submit</button>
+    <a th:href="@{/}">Cancel</a>
+</form>
 </body>
 </html>

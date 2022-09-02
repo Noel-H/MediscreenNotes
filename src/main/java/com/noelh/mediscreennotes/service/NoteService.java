@@ -33,4 +33,17 @@ public class NoteService {
         return noteRepository.save(note);
     }
 
+    public Note updateNote(String id, NoteDTO noteDTO){
+        Note note = getNoteById(id);
+        note.setPatientName(noteDTO.getPatientName() == null ? note.getPatientName() : noteDTO.getPatientName());
+        note.setNoteOfThePractitioner(noteDTO.getNoteOfThePractitioner() == null ? note.getNoteOfThePractitioner() : noteDTO.getNoteOfThePractitioner());
+        return noteRepository.save(note);
+    }
+
+    public Note deleteNote(String id){
+        Note note = getNoteById(id);
+        noteRepository.deleteById(id);
+        return note;
+    }
+
 }
