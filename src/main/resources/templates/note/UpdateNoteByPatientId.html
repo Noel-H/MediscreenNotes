@@ -17,7 +17,7 @@
     <input type="text" id="noteOfThePractitioner" th:field="*{noteOfThePractitioner}"/>
 
     <button type="submit">Submit</button>
-    <a th:href="@{/}">Cancel</a>
+    <a th:href="@{/notes/{id}(id=${note.getPatientId()})}">Cancel</a>
 </form>
 </body>
 </html>
