@@ -5,10 +5,13 @@
     <title>UpdateNoteByPatientId</title>
 </head>
 <body>
-<form th:action="@{/}" th:object="${noteDTO}" method="post">
+<form th:action="@{/notes/update/{id}(id=${note.getId})}" th:object="${note}" method="post">
+
+    <label for="id">Id</label>
+    <input type="text" id="id" th:field="*{id}" readonly/>
 
     <label for="patientId">PatientId</label>
-    <input type="text" id="patientId" th:field="*{patientId}" />
+    <input type="text" id="patientId" th:field="*{patientId}" readonly/>
 
     <label for="noteOfThePractitioner">NoteOfThePractitioner</label>
     <input type="text" id="noteOfThePractitioner" th:field="*{noteOfThePractitioner}"/>

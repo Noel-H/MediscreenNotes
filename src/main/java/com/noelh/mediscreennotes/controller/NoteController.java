@@ -107,7 +107,7 @@ public class NoteController {
     public String postUpdateNoteFromHistory(@PathVariable("id") String id, @ModelAttribute Note note){
         log.info("POST notes/update/{}", id);
         noteService.updateNote(id, new NoteDTO(note.getPatientId(), note.getNoteOfThePractitioner()));
-        return "redirect:/";
+        return "redirect:/notes/"+note.getPatientId();
     }
 
     @GetMapping("/delete/{id}")
