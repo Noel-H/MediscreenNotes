@@ -7,14 +7,15 @@
 <body>
 <p>NoteListByPatientId page | <a th:href="@{/notes/add/{id}(id=${patientId})}">Add New Note By Patient Id</a> | <a href="http://localhost:8080/patient">Home</a></p>
 <table>
-  <tbody>
-  <tr th:each="note : ${noteListByPatientId}">
-    <td th:text="${note.getPatientId()}">PatientId</td>
-    <td th:text="${note.getNoteOfThePractitioner()}">NoteOfThePractitioner</td>
-    <td><a th:href="@{/notes/update/{id}(id=${note.getId})}">Update</a></td>
-    <td><a th:href="@{/notes/delete/{id}(id=${note.getId})}">Delete</a></td>
-  </tr>
-  </tbody>
+    <tbody>
+    <tr th:each="note : ${noteListByPatientId}">
+        <td th:text="${note.getPatientId()}">PatientId</td>
+        <td th:text="${#strings.abbreviate(note.getNoteOfThePractitioner(),100)}">NoteOfThePractitioner</td>
+        <td><a th:href="@{/notes/read/{id}(id=${note.getId})}">Read</a></td>
+        <td><a th:href="@{/notes/update/{id}(id=${note.getId})}">Update</a></td>
+        <td><a th:href="@{/notes/delete/{id}(id=${note.getId})}">Delete</a></td>
+    </tr>
+    </tbody>
 </table>
 </body>
 </html>

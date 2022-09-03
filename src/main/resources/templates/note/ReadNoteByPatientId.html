@@ -14,10 +14,9 @@
     <input type="text" id="patientId" th:field="*{patientId}" readonly/>
 
     <label for="noteOfThePractitioner">NoteOfThePractitioner</label>
-    <textarea id="noteOfThePractitioner" rows="30" cols="50" th:field="*{noteOfThePractitioner}"></textarea>
+    <textarea id="noteOfThePractitioner" rows="30" cols="50" th:field="*{noteOfThePractitioner}" readonly></textarea>
 
-    <button type="submit">Submit</button>
-    <a th:href="@{/notes/{id}(id=${note.getPatientId()})}">Cancel</a>
+    <a th:href="@{/notes/{id}(id=${note.getPatientId()})}">Back</a>
 </form>
 </body>
 </html>

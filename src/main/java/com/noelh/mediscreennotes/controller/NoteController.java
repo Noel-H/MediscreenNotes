@@ -38,6 +38,20 @@ public class NoteController {
         return "note/NoteListByPatientId";
     }
 
+    @GetMapping("notes/read/{id}")
+    public String getReadNoteFromHistory(@PathVariable("id") String id, Model model){
+        log.info("GET notes/read/{}", id);
+        Note note;
+        try {
+            note = noteService.getNoteById(id);
+        } catch (NoSuchElementException e) {
+            log.error("GET notes/read/{} : ERROR = {}", id, e.getMessage());
+            return "redirect:http/localhost:8080/patient";
+        }
+        model.addAttribute("note", note);
+        return "note/ReadNoteByPatientId";
+    }
+
     @GetMapping("/add")
     public String getAddNote(Model model){
         log.info("GET /add");

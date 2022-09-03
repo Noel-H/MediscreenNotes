@@ -10,7 +10,8 @@
     <tbody>
     <tr th:each="note : ${noteList}">
         <td th:text="${note.getPatientId()}">PatientId</td>
-        <td th:text="${note.getNoteOfThePractitioner()}">NoteOfThePractitioner</td>
+        <td th:text="${#strings.abbreviate(note.getNoteOfThePractitioner(),100)}">NoteOfThePractitioner</td>
+        <td><a th:href="@{/notes/read/{id}(id=${note.getId})}">Read</a></td>
         <td><a th:href="@{/update/{id}(id=${note.getId})}">Update</a></td>
         <td><a th:href="@{/delete/{id}(id=${note.getId})}">Delete</a></td>
     </tr>
