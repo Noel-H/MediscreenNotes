@@ -21,6 +21,10 @@ public class NoteService {
         return noteRepository.findAll();
     }
 
+    public List<Note> getNoteListByPatientId(Long patientId) {
+        return noteRepository.getNotesByPatientId(patientId);
+    }
+
     public Note getNoteById(String id){
         return noteRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Note not found with id : " + id));
@@ -45,5 +49,4 @@ public class NoteService {
         noteRepository.deleteById(id);
         return note;
     }
-
 }

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddNoteByPatientId</title>
+</head>
+<body>
+<form th:action="@{/addByPatientId/{id}(id=${noteDTO.getPatientId()})}" th:object="${noteDTO}" method="post">
+
+  <label for="patientId">PatientId</label>
+  <input type="text" id="patientId" th:field="*{patientId}" readonly/>
+
+  <label for="noteOfThePractitioner">NoteOfThePractitioner</label>
+  <input type="text" id="noteOfThePractitioner" th:field="*{noteOfThePractitioner}"/>
+
+  <button type="submit">Submit</button>
+  <a th:href="@{/}">Cancel</a>
+</form>
+</body>
+</html>

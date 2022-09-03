@@ -30,6 +30,14 @@ public class NoteController {
         return "note/NoteList";
     }
 
+    @GetMapping("/notes/{id}")
+    public String getNoteListByPatientId(@PathVariable("id") Long patientId, Model model){
+        log.info("GET /notes/{}", patientId);
+        model.addAttribute("noteListByPatientId", noteService.getNoteListByPatientId(patientId));
+        model.addAttribute("patientId", patientId);
+        return "note/NoteListByPatientId";
+    }
+
     @GetMapping("/add")
     public String getAddNote(Model model){
         log.info("GET /add");
@@ -42,6 +50,22 @@ public class NoteController {
         log.info("POST /add");
         noteService.addNote(noteDTO);
         return "redirect:/";
+    }
+
+    @GetMapping("/addByPatientId/{id}")
+    public String getAddNoteByPatientId(@PathVariable("id") Long patientId, Model model){
+        log.info("GET /addByPatientId/{}", patientId);
+        NoteDTO noteDTO = new NoteDTO();
+        noteDTO.setPatientId(patientId);
+        model.addAttribute("noteDTO", noteDTO);
+        return "note/AddNoteByPatientId";
+    }
+
+    @PostMapping("/addByPatientId/{id}")
+    public String postAddNoteByPatientId(@PathVariable("id") Long patientId, @ModelAttribute NoteDTO noteDTO){
+        log.info("POST /addByPatientId/{}", patientId);
+        noteService.addNote(noteDTO);
+        return "redirect:/notes/"+patientId;
     }
 
     @GetMapping("/update/{id}")

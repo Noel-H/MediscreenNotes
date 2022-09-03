@@ -11,6 +11,6 @@ public class Note {
     @Id
     private String id;
 
-    private Long PatientId;
+    private Long patientId;
     private String noteOfThePractitioner;
 }
