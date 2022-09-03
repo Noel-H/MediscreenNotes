@@ -11,8 +11,8 @@
   <tr th:each="note : ${noteListByPatientId}">
     <td th:text="${note.getPatientId()}">PatientId</td>
     <td th:text="${note.getNoteOfThePractitioner()}">NoteOfThePractitioner</td>
-    <td><a th:href="@{/update/{id}(id=${note.getId})}">Update</a></td>
-    <td><a th:href="@{/delete/{id}(id=${note.getId})}">Delete</a></td>
+    <td><a th:href="@{/notes/update/{id}(id=${note.getId})}">Update</a></td>
+    <td><a th:href="@{/notes/delete/{id}(id=${note.getId})}">Delete</a></td>
   </tr>
   </tbody>
 </table>

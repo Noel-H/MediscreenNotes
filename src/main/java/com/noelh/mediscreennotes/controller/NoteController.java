@@ -89,6 +89,27 @@ public class NoteController {
         return "redirect:/";
     }
 
+    @GetMapping("notes/update/{id}")
+    public String getUpdateNoteFromHistory(@PathVariable("id") String id, Model model){
+        log.info("GET notes/update/{}", id);
+        Note note;
+        try {
+            note = noteService.getNoteById(id);
+        } catch (NoSuchElementException e) {
+            log.error("GET notes/update/{} : ERROR = {}", id, e.getMessage());
+            return "redirect:http/localhost:8080/patient";
+        }
+        model.addAttribute("note", note);
+        return "note/UpdateNoteByPatientId";
+    }
+
+    @PostMapping("notes/update/{id}")
+    public String postUpdateNoteFromHistory(@PathVariable("id") String id, @ModelAttribute Note note){
+        log.info("POST notes/update/{}", id);
+        noteService.updateNote(id, new NoteDTO(note.getPatientId(), note.getNoteOfThePractitioner()));
+        return "redirect:/";
+    }
+
     @GetMapping("/delete/{id}")
     public String deleteNote(@PathVariable("id") String id){
         log.info("GET /delete/{}", id);
@@ -100,4 +121,18 @@ public class NoteController {
         }
         return "redirect:/";
     }
+
+    @GetMapping("notes/delete/{id}")
+    public String deleteNoteFromHistory(@PathVariable("id") String id){
+        log.info("GET notes/delete/{}", id);
+        Note note;
+        try {
+            note = noteService.deleteNote(id);
+        } catch (NoSuchElementException e) {
+            log.error("GET notes/delete/{} : ERROR = {}", id, e.getMessage());
+            return "redirect:http://localhost:8080/patient";
+        }
+        return "redirect:/notes/"+note.getPatientId();
+    }
+
 }
