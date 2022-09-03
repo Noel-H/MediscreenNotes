@@ -38,6 +38,18 @@ class NoteServiceTest {
     }
 
     @Test
+    public void getNoteListByPatientId_Should_Return_NoteList(){
+        //Given
+
+
+        //When
+        noteService.getNoteListByPatientId(1L);
+
+        //Then
+        verify(noteRepository, times(1)).getNotesByPatientId(1L);
+    }
+
+    @Test
     public void getNoteById_Should_Return_Note(){
         //Given
         when(noteRepository.findById("1")).thenReturn(Optional.of(new Note()));
