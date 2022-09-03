@@ -63,11 +63,11 @@ class NoteServiceTest {
     public void addNote_Should_Return_Note(){
         //Given
         NoteDTO noteDTO = new NoteDTO(
-                "TestPatientName",
+                1L,
                 "TestNoteOfThePractitioner");
 
         Note note = new Note();
-        note.setPatientName("TestPatientName");
+        note.setPatientId(1L);
         note.setNoteOfThePractitioner("TestNoteOfThePractitioner");
 
         //When
@@ -81,7 +81,7 @@ class NoteServiceTest {
     public void updateNote_Should_Return_Exception(){
         //Given
         NoteDTO noteDTO = new NoteDTO();
-        noteDTO.setPatientName("TestPatientName");
+        noteDTO.setPatientId(1L);
         noteDTO.setNoteOfThePractitioner("TestNoteOfThePractitioner");
 
         when(noteRepository.findById("1")).thenReturn(Optional.empty());
@@ -95,12 +95,12 @@ class NoteServiceTest {
     public void updateNote_Should_Return_Note(){
         //Given
         NoteDTO noteDTO = new NoteDTO();
-        noteDTO.setPatientName("TestPatientName");
+        noteDTO.setPatientId(1L);
         noteDTO.setNoteOfThePractitioner("TestNoteOfThePractitioner");
 
         Note note = new Note();
         note.setId("1");
-        note.setPatientName("TestPatientName");
+        note.setPatientId(1L);
         note.setNoteOfThePractitioner("TestNoteOfThePractitioner");
 
         when(noteRepository.findById("1")).thenReturn(Optional.of(note));
@@ -119,7 +119,7 @@ class NoteServiceTest {
 
         Note note = new Note();
         note.setId("1");
-        note.setPatientName("TestPatientName");
+        note.setPatientId(1L);
         note.setNoteOfThePractitioner("TestNoteOfThePractitioner");
 
         when(noteRepository.findById("1")).thenReturn(Optional.of(note));
@@ -136,7 +136,7 @@ class NoteServiceTest {
         //Given
         Note note = new Note();
         note.setId("1");
-        note.setPatientName("TestPatientName");
+        note.setPatientId(1L);
         note.setNoteOfThePractitioner("TestNoteOfThePractitioner");
 
         when(noteRepository.findById("1")).thenReturn(Optional.of(note));

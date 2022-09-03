@@ -61,7 +61,7 @@ public class NoteController {
     @PostMapping("/update/{id}")
     public String postUpdateNote(@PathVariable("id") String id, @ModelAttribute Note note){
         log.info("POST /update/{}", id);
-        noteService.updateNote(id, new NoteDTO(note.getPatientName(), note.getNoteOfThePractitioner()));
+        noteService.updateNote(id, new NoteDTO(note.getPatientId(), note.getNoteOfThePractitioner()));
         return "redirect:/";
     }
 

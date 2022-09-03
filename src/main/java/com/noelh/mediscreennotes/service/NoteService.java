@@ -28,14 +28,14 @@ public class NoteService {
 
     public Note addNote(NoteDTO noteDTO){
         Note note = new Note();
-        note.setPatientName(noteDTO.getPatientName());
+        note.setPatientId(noteDTO.getPatientId());
         note.setNoteOfThePractitioner(noteDTO.getNoteOfThePractitioner());
         return noteRepository.save(note);
     }
 
     public Note updateNote(String id, NoteDTO noteDTO){
         Note note = getNoteById(id);
-        note.setPatientName(noteDTO.getPatientName() == null ? note.getPatientName() : noteDTO.getPatientName());
+        note.setPatientId(noteDTO.getPatientId() == null ? note.getPatientId() : noteDTO.getPatientId());
         note.setNoteOfThePractitioner(noteDTO.getNoteOfThePractitioner() == null ? note.getNoteOfThePractitioner() : noteDTO.getNoteOfThePractitioner());
         return noteRepository.save(note);
     }

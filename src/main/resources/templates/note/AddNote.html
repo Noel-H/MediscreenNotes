@@ -7,8 +7,8 @@
 <body>
 <form th:action="@{/add}" th:object="${noteDTO}" method="post">
 
-    <label for="patientName">PatientName</label>
-    <input type="text" id="patientname" th:field="*{patientName}" />
+    <label for="patientId">PatientId</label>
+    <input type="text" id="patientId" th:field="*{patientId}" />
 
     <label for="noteOfThePractitioner">NoteOfThePractitioner</label>
     <input type="text" id="noteOfThePractitioner" th:field="*{noteOfThePractitioner}"/>

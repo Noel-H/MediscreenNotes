@@ -9,8 +9,8 @@
 <table>
     <tbody>
     <tr th:each="note : ${noteList}">
-        <td th:text="${note.getPatientName()}">LastName</td>
-        <td th:text="${note.getNoteOfThePractitioner()}">FirstName</td>
+        <td th:text="${note.getPatientId()}">PatientId</td>
+        <td th:text="${note.getNoteOfThePractitioner()}">NoteOfThePractitioner</td>
         <td><a th:href="@{/update/{id}(id=${note.getId})}">Update</a></td>
         <td><a th:href="@{/delete/{id}(id=${note.getId})}">Delete</a></td>
     </tr>
